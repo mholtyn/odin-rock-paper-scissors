@@ -50,6 +50,7 @@ function simulateRound(playerChoice, computerChoice) {
 
 function game() {
     let wins = 0;
+    let losses = 0;
     for (let i = 0; i < 5; i++) {
         const playerChoice = prompt("Enter your choice: ").toLowerCase();
         const computerChoice = getComputerChoice();
@@ -57,9 +58,23 @@ function game() {
         if (simulateRound(playerChoice, computerChoice).includes("win")) {
             wins++;
         }
+        if (simulateRound(playerChoice, computerChoice).includes("lose")) {
+            losses++;
+        }
     }
-    return wins;
+    return wins, losses;
 }
 
+// TODO: Print out the winner
 
-console.log(game());
+let wins, losses = game();
+
+if (wins > losses) {
+    console.log("You won the game!")
+}
+else if (losses > wins) {
+    console.log("You lost the game!")
+}
+else {
+    console.log("It's a tie!")
+}
