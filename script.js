@@ -45,11 +45,21 @@ function simulateRound(playerChoice, computerChoice) {
     else return "Error. Please try again"
 }
 
-const playerChoice = prompt("Enter your choice: ").toLowerCase();
-const computerChoice = getComputerChoice();
-
-console.log(simulateRound(playerChoice, computerChoice));
-
-
 
 // TODO: Create function that plays one game of RPS (5 rounds)
+
+function game() {
+    let wins = 0;
+    for (let i = 0; i < 5; i++) {
+        const playerChoice = prompt("Enter your choice: ").toLowerCase();
+        const computerChoice = getComputerChoice();
+        console.log(simulateRound(playerChoice, computerChoice));
+        if (simulateRound(playerChoice, computerChoice).includes("win")) {
+            wins++;
+        }
+    }
+    return wins;
+}
+
+
+console.log(game());
